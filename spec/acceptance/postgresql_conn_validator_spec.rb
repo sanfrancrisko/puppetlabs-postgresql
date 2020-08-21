@@ -1,6 +1,6 @@
 require 'spec_helper_acceptance'
 
-describe 'postgresql_conn_validator' do
+describe 'postgresql_conn_validator', :integration do
   let(:install_pp) do
     <<-MANIFEST
       class { 'postgresql::server':
