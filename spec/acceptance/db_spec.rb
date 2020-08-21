@@ -1,6 +1,6 @@
 require 'spec_helper_acceptance'
 
-describe 'postgresql::server::db' do
+describe 'postgresql::server::db', :integration do
   it 'creates a database' do
     begin
       tmpdir = run_shell('mktemp').stdout
