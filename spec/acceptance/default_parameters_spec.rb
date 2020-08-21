@@ -2,7 +2,7 @@ require 'spec_helper_acceptance'
 
 # These tests are designed to ensure that the module, when ran with defaults,
 # sets up everything correctly and allows us to connect to Postgres.
-describe 'postgresql::server' do
+describe 'postgresql::server', :integration do
   it 'with defaults' do
     pp = <<-MANIFEST
       class { 'postgresql::server': }

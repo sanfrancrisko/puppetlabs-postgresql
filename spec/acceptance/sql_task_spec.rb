@@ -1,7 +1,7 @@
 # run a test task
 require 'spec_helper_acceptance'
 
-describe 'postgresql task' do
+describe 'postgresql task', :integration do
   describe 'sql task' do
     pp = <<-MANIFEST
         class { 'postgresql::server': } ->
