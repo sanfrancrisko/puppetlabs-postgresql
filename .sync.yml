@@ -3,7 +3,8 @@
   delete: true
 ".travis.yml":
   global_env:
-    - HONEYCOMB_WRITEKEY="7f3c63a70eecc61d635917de46bea4e6",HONEYCOMB_DATASET="litmus tests"
+  - HONEYCOMB_WRITEKEY="7f3c63a70eecc61d635917de46bea4e6",HONEYCOMB_DATASET="litmus
+    tests"
   deploy_to_forge:
     enabled: false
   user: puppet
@@ -13,7 +14,7 @@
   use_litmus: true
   litmus:
     provision_list:
-    - ---travis_el
+    - "---travis_el"
     - travis_deb
     - travis_el6
     - travis_el7
@@ -42,9 +43,17 @@ Gemfile:
       git: https://github.com/skywinder/github-changelog-generator
       ref: 20ee04ba1234e9e83eb2ffb5056e23d641c7a018
       condition: Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.2.2')
+    - gem: rspec-puppet
+      require: true
+      git: https://github.com/rodjek/rspec-puppet
+    - gem: puppet_litmus
+      require: true
+      git: https://github.com/puppetlabs/puppet_litmus
+    - gem: bolt
+      version: "= 2.23.0"
+      condition: Gem::Version.new(RUBY_VERSION.dup) > Gem::Version.new('2.5.0')
 Rakefile:
-  extras:
-    "FastGettext.default_text_domain = 'default-text-domain'"
+  extras: FastGettext.default_text_domain = 'default-text-domain'
   changelog_user: puppetlabs
 spec/spec_helper.rb:
   mock_with: ":rspec"
